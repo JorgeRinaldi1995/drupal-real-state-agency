@@ -1,0 +1,4 @@
+name: realty
+type: module
+description: realty entity
+core_version_requirement: ^8 || ^9 || ^10

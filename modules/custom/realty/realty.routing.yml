@@ -1,0 +1,44 @@
+entity.realty.edit_form:
+  path: '/realtys/{realty}/edit'
+  defaults:
+    _entity_form: realty.edit
+    _title: 'Edit realty'
+  requirements:
+    _entity_access: 'realty.edit'
+
+entity.realty.delete_form:
+  path: '/realtys/{realty}/delete'
+  defaults:
+    _entity_form: realty.delete
+    _title: 'Delete realty'
+  requirements:
+    _entity_access: 'realty.delete'
+
+entity.realty.canonical:
+  path: '/realty/{realty}'
+  defaults:
+    _entity_view: 'realty'
+    _title: 'Realty'
+  requirements:
+    _entity_access: 'realty.view'
+
+realty.add:
+  path: '/realtys/create'
+  defaults:
+    _entity_form: realty.add
+    _title: 'Add realty'
+  requirements:
+    _entity_create_access: 'realty'
+
+entity.realty.collection:
+  path: '/realtys'
+  requirements:
+    _permission: 'administer own realtys'
+
+entity.realty.settings:
+  path:  '/admin/structure/realty'
+  defaults:
+    _form: '\Drupal\realty\Form\RealtySettingsForm'
+    _title: 'Realty settings'
+  requirements:
+    _permission: 'administer own realtys'

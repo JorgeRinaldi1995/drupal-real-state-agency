@@ -1,0 +1,11 @@
+realty.toolbar.my_realtys:
+  title: 'My realtys'
+  route_name: entity.realty.collection
+  parent: system.admin
+  weight: 99
+
+realty.admin.structure.settings:
+  title: 'Realty settings'
+  description: 'Configure Realty entity'
+  route_name: entity.realty.settings
+  parent: system.admin_structure

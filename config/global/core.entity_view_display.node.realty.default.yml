@@ -1,0 +1,27 @@
+uuid: 07f7fa83-ef54-40c2-8a0e-ecbad6bf38c1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.realty.field_body
+    - node.type.realty
+  module:
+    - user
+id: node.realty.default
+targetEntityType: node
+bundle: realty
+mode: default
+content:
+  field_body:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

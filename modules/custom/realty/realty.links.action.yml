@@ -1,0 +1,6 @@
+realty.add_realty:
+  route_name: realty.add
+  title: 'Add an realty'
+  appears_on:
+    - entity.realty.collection
+    # adds a call to action button on realty collection
