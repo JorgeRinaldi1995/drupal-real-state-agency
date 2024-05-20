@@ -1,0 +1,21 @@
+uuid: 25180eac-4718-4708-a381-09a38e58af65
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.realty.field_realty_type
+  module:
+    - options
+    - realty
+id: realty.realty.field_realty_type
+field_name: field_realty_type
+entity_type: realty
+bundle: realty
+label: 'Realty type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,30 @@
+uuid: 0766eb62-ec96-4a3c-ae56-2df513c81f3e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.realty.field_image
+    - media.type.image
+  module:
+    - realty
+id: realty.realty.field_image
+field_name: field_image
+entity_type: realty
+bundle: realty
+label: Image
+description: 'Realty photos'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

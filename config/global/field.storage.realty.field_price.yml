@@ -1,0 +1,20 @@
+uuid: fbde96f5-a7d3-476e-b925-3f70821de301
+langcode: en
+status: true
+dependencies:
+  module:
+    - realty
+id: realty.field_price
+field_name: field_price
+entity_type: realty
+type: decimal
+settings:
+  precision: 10
+  scale: 0
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

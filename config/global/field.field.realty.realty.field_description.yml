@@ -1,0 +1,24 @@
+uuid: 8069826c-c261-4da3-bbe2-c33b4f35c434
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.realty.field_description
+    - filter.format.basic_html
+  module:
+    - realty
+    - text
+id: realty.realty.field_description
+field_name: field_description
+entity_type: realty
+bundle: realty
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+field_type: text_long

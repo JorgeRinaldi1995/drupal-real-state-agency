@@ -1,0 +1,27 @@
+uuid: dd928b1a-00cd-42b7-926e-6644ac0e7a4e
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - realty
+id: realty.field_realty_type
+field_name: field_realty_type
+entity_type: realty
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: with_minimum
+      label: 'Set minimum price'
+    -
+      value: no_minimum
+      label: 'No minimum price'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
