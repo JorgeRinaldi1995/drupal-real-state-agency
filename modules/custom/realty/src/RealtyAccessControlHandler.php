@@ -21,20 +21,24 @@ class RealtyAccessControlHandler extends EntityAccessControlHandler{
    * $operation as defined in the routing.yml file.
    */
   protected function checkAccess(EntityInterface $entity, $operation, AccountInterface $account){
-
+    
     $access = AccessResult::forbidden();
 
     switch ($operation) {
       case 'view':
         // draft
-        if($entity->get('moderation_state')->getString() == 'draft') {
-          if ($account->hasPermission('administer own realtys')) {
-            $access = AccessResult::allowedIf($account->id() == $entity->getOwnerId())->cachePerUser()->addCacheableDependency($entity);
+        $user = \Drupal::currentUser();
+        if($user){
+          if($entity->get('moderation_state')->getString() == 'draft') {
+            if ($account->hasPermission('administer own realtys')) {
+              $access = AccessResult::allowedIf($account->id() == $entity->getOwnerId())->cachePerUser()->addCacheableDependency($entity);
+            }
+          } else {
+            // published, expired
+            $access = AccessResult::allowed()->addCacheableDependency($entity);
           }
-        } else {
-          // published, expired
-          $access = AccessResult::allowed()->addCacheableDependency($entity);
         }
+
         break;
       case 'update': // Shows the edit buttons in operations
         if ($account->hasPermission('administer own realtys')) {
