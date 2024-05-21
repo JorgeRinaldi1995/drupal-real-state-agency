@@ -64,14 +64,14 @@ use Drupal\Core\Render\Markup;
 
     public static function baseFieldDefinitions(EntityTypeInterface $entity_type) {
       $fields = parent::baseFieldDefinitions($entity_type); // provides id and uuid fields
-  
+      
       $fields['user_id'] = BaseFieldDefinition::create('entity_reference')
         ->setLabel(t('User'))
         ->setDescription(t('The user that created the realty.'))
         ->setSetting('target_type', 'user')
         ->setSetting('handler', 'default')
         ->setDisplayOptions('view', [
-          'label' => 'hidden',
+          'label' => 'user',
           'type' => 'author',
           'weight' => 0,
         ])
@@ -120,7 +120,7 @@ use Drupal\Core\Render\Markup;
       $fields['changed'] = BaseFieldDefinition::create('changed')
         ->setLabel(t('Changed'))
         ->setDescription(t('The time that the entity was last edited.'));
-  
+      
       return $fields;
     }
   
@@ -128,6 +128,7 @@ use Drupal\Core\Render\Markup;
      * {@inheritdoc}
      */
     public function getOwner() {
+      /* dd($this->get('user_id')->entity); */
       return $this->get('user_id')->entity;
     }
   
@@ -137,5 +138,26 @@ use Drupal\Core\Render\Markup;
     public function getOwnerId() {
       return $this->get('user_id')->target_id;
     }
+
+    /**
+     * Return Promo Text
+     */
+    public function getPromoText(){
+      return 'Be the First';
+    }
   
+    /**
+     * Return a price field
+     * @return string the price
+     */
+    public function getPriceAmount(){
+      switch($this->get('field_realty_type')->getString()){
+        case 'with_minimum':
+          return $this->get('field_price')->getString() . '$';
+          break;
+        case 'no_minimum':
+          return 'Start bidding at 0$';
+      }
+      return '';
+    }
 }

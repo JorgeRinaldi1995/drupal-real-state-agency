@@ -1,0 +1,15 @@
+<a href="{{ path('entity.realty.canonical', {'realty': realty.id()}) }}" {{ attributes.addClass('realty-teaser') }}>
+  {% if realty.getPromoText() %}
+    <div class="badge">{{ realty.getPromoText() }}</div>
+  {% endif %}
+  <div class="product-thumb">
+    {{ content.field_image }}
+  </div>
+  <div class="product-details">
+    <h4>{{ realty.label() }}</h4>
+    <p>0 bids</p>
+    <div class="product-bottom-details">
+      <div class="product-price">{{ realty.getPriceAmount() }}</div>
+    </div>
+  </div>
+</a>

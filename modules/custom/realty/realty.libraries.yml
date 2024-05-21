@@ -1,0 +1,4 @@
+realty_overview_page:
+  css:
+    theme:
+      css/overview.css: {}

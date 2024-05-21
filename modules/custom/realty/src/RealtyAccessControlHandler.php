@@ -23,22 +23,18 @@ class RealtyAccessControlHandler extends EntityAccessControlHandler{
   protected function checkAccess(EntityInterface $entity, $operation, AccountInterface $account){
     
     $access = AccessResult::forbidden();
-
+    
     switch ($operation) {
       case 'view':
         // draft
-        $user = \Drupal::currentUser();
-        if($user){
-          if($entity->get('moderation_state')->getString() == 'draft') {
-            if ($account->hasPermission('administer own realtys')) {
-              $access = AccessResult::allowedIf($account->id() == $entity->getOwnerId())->cachePerUser()->addCacheableDependency($entity);
-            }
-          } else {
-            // published, expired
-            $access = AccessResult::allowed()->addCacheableDependency($entity);
+        if($entity->get('moderation_state')->getString() == 'draft') {
+          if ($account->hasPermission('administer own realtys')) {
+            $access = AccessResult::allowedIf($account->id() == $entity->getOwnerId())->cachePerUser()->addCacheableDependency($entity);
           }
+        } else {
+          // published, expired
+          $access = AccessResult::allowed()->addCacheableDependency($entity);
         }
-
         break;
       case 'update': // Shows the edit buttons in operations
         if ($account->hasPermission('administer own realtys')) {
@@ -46,6 +42,7 @@ class RealtyAccessControlHandler extends EntityAccessControlHandler{
         }
         break;
       case 'edit': // Lets me in on the edit-page of the entity
+        /* dd($account->hasPermission('administer own realtys')); */
         if ($account->hasPermission('administer own realtys')) {
           $access = AccessResult::allowedIf($account->id() == $entity->getOwnerId())->cachePerUser()->addCacheableDependency($entity);
         }
