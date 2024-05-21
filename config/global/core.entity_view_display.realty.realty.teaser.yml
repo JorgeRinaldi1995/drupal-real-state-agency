@@ -1,8 +1,9 @@
-uuid: 0db204c7-1a71-4d79-a225-aa4c01dcbdd9
+uuid: 0988c56a-c30d-4f5b-bba8-c73e1219b101
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.realty.teaser
     - field.field.realty.realty.field_description
     - field.field.realty.realty.field_image
     - field.field.realty.realty.field_price
@@ -10,24 +11,16 @@ dependencies:
   module:
     - options
     - realty
-    - text
     - user
-id: realty.realty.default
+id: realty.realty.teaser
 targetEntityType: realty
 bundle: realty
-mode: default
+mode: teaser
 content:
   content_moderation_control:
     settings: {  }
     third_party_settings: {  }
-    weight: -20
-    region: content
-  field_description:
-    type: text_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 2
+    weight: 0
     region: content
   field_image:
     type: entity_reference_entity_view
@@ -36,7 +29,7 @@ content:
       view_mode: default
       link: false
     third_party_settings: {  }
-    weight: 1
+    weight: 2
     region: content
   field_price:
     type: number_decimal
@@ -47,28 +40,22 @@ content:
       scale: 2
       prefix_suffix: true
     third_party_settings: {  }
-    weight: 4
+    weight: 3
     region: content
   field_realty_type:
     type: list_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 3
-    region: content
-  title:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: -4
+    weight: 4
     region: content
   user_id:
     type: author
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 0
+    weight: 1
     region: content
-hidden: {  }
+hidden:
+  field_description: true
+  title: true

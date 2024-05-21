@@ -42,3 +42,15 @@ entity.realty.settings:
     _title: 'Realty settings'
   requirements:
     _permission: 'administer own realtys'
+
+realty.publish:
+  path: '/realtys/publish/{realty}'
+  defaults:
+    _controller: '\Drupal\realty\Controller\RealtyPublishController::Render'
+    _title_callback: 'Publish realty'
+  requirements:
+    _custom_access: '\Drupal\realty\Controller\RealtyPublishController::Access'
+  options:
+    parameters:
+      realty:
+        type: entity:realty

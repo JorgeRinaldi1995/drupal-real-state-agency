@@ -1,0 +1,11 @@
+uuid: e94b98f6-faa2-4bd9-83a0-96ada4010301
+langcode: en
+status: true
+dependencies:
+  module:
+    - realty
+id: realty.teaser
+label: Teaser
+description: ''
+targetEntityType: realty
+cache: true

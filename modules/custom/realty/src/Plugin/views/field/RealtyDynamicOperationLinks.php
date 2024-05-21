@@ -15,8 +15,7 @@ use Drupal\core\Url;
  *
  * @ViewsField("realty_dynamic_operation_links")
  */
-class RealtyDynamicOperationLinks extends FieldPluginBase
-{
+class RealtyDynamicOperationLinks extends FieldPluginBase{
 
   /**
    * The current display.
@@ -29,8 +28,7 @@ class RealtyDynamicOperationLinks extends FieldPluginBase
   /**
    * {@inheritdoc}
    */
-  public function init(ViewExecutable $view, DisplayPluginBase $display, array &$options = NULL)
-  {
+  public function init(ViewExecutable $view, DisplayPluginBase $display, array &$options = NULL){
     parent::init($view, $display, $options);
     $this->currentDisplay = $view->current_display;
   }
@@ -38,24 +36,21 @@ class RealtyDynamicOperationLinks extends FieldPluginBase
   /**
    * {@inheritdoc}
    */
-  public function usesGroupBy()
-  {
+  public function usesGroupBy(){
     return FALSE;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function query()
-  {
+  public function query(){
     // Do nothing -- to override the parent query.
   }
 
   /**
    * {@inheritdoc}
    */
-  protected function defineOptions()
-  {
+  protected function defineOptions(){
     $options = parent::defineOptions();
     $options['hide_alter_empty'] = ['default' => FALSE];
     return $options;
@@ -64,8 +59,7 @@ class RealtyDynamicOperationLinks extends FieldPluginBase
   /**
    * {@inheritdoc}
    */
-  public function render(ResultRow $values)
-  {
+  public function render(ResultRow $values){
     $entity = $values->_entity;
     $state = $entity->get('moderation_state')->getString();
 
@@ -73,7 +67,7 @@ class RealtyDynamicOperationLinks extends FieldPluginBase
       case 'draft':
         $operations['publish'] = [
           'title' => $this->t('Publish'),
-          'url' => Url::fromRoute('entity.realty.edit_form', ['realty' => $entity->id()])
+          'url' => Url::fromRoute('realty.publish', ['realty' => $entity->id()])
         ];
         break;
     }
